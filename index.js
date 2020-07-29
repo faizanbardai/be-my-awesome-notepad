@@ -19,7 +19,7 @@ app.get("/", (req, res) =>
 
 app.use(bodyParser.json());
 
-var whitelist = [];
+var whitelist = ["http://localhost:3000"];
 
 var corsOptions = {
   origin: function (origin, callback) {
