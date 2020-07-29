@@ -4,6 +4,10 @@ const cors = require("cors");
 const app = express();
 const notesRoute = require("./route/notes");
 const bodyParser = require("body-parser");
+const mongooseConnection = require("./db/mongoose");
+const listEndpoints = require("express-list-endpoints");
+
+mongooseConnection();
 
 require("dotenv").config();
 const port = process.env.PORT;
@@ -15,7 +19,7 @@ app.get("/", (req, res) =>
 
 app.use(bodyParser.json());
 
-var whitelist = ["http://localhost:3000", "http://localhost:3003"];
+var whitelist = [];
 
 var corsOptions = {
   origin: function (origin, callback) {
@@ -28,6 +32,8 @@ var corsOptions = {
 };
 
 app.use("/notes", cors(corsOptions), notesRoute);
+
+console.log(listEndpoints(app));
 
 app.listen(port, () =>
   console.log(`Example app listening at http://localhost:${port}`)
