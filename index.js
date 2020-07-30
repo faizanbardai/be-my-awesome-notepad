@@ -19,7 +19,10 @@ app.get("/", (req, res) =>
 
 app.use(bodyParser.json());
 
-var whitelist = ["http://localhost:3000"];
+var whitelist = [
+  "http://localhost:3000",
+  "https://my-awesome-notepad.herokuapp.com",
+];
 
 var corsOptions = {
   origin: function (origin, callback) {
