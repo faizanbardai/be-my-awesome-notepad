@@ -1,5 +1,7 @@
 require("dotenv").config();
 var mongoose = require("mongoose");
+
+// Setting up mongoose parameters and logging the status after initial connection
 const mongooseConnection = () => {
   mongoose
     .connect(process.env.MONGO_URI, {
